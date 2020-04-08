@@ -68,6 +68,13 @@ public class AgentTest {
         String actualFeedback = agent.getFeedback("1256", secretNumber);
         assertEquals("2A0B", actualFeedback);
     }
+
+    @Test
+    public void test_getFeedback_when_input_match_4_position_return_4A0B() {
+        Integer[] secretNumber = new Integer[] {1, 2, 3, 4};
+        String actualFeedback = agent.getFeedback("1234", secretNumber);
+        assertEquals("4A0B", actualFeedback);
+    }
     
 }
     
