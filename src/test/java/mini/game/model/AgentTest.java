@@ -37,6 +37,12 @@ public class AgentTest {
     }
 
     @Test
+    public void test_isValidateInput_when_input_not_parsable_to_number_return_false() {
+        boolean actualOutput = agent.isValidateInput("123a");
+        assertEquals(false, actualOutput);
+    }
+
+    @Test
     public void test_isValidateInput_when_input_is_valid_return_true() {
         boolean actualOutput = agent.isValidateInput("1234");
         assertEquals(true, actualOutput);

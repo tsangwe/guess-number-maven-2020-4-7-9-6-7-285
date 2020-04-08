@@ -1,6 +1,6 @@
 package mini.game.model;
 
-import java.security.GeneralSecurityException;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class Agent {
     private static final String WINNING_OUTPUT = "4A0B";
@@ -12,12 +12,11 @@ public class Agent {
     }
 
     public boolean isValidateInput(String input) {
-        if (input.length() != 4) return false;
+        if (input.length() != 4 || !NumberUtils.isParsable(input)) return false;
         return true;
     }
 
     public String checkPlayerInput(String input) {
-        // TODO: implement logic here
         return getFeedback(input, secretNumberGenerator.getSecretNumbers());
     }
 
