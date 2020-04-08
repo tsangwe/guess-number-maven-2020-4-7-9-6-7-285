@@ -49,10 +49,19 @@ public class AgentTest {
     }
 
     @Test
+    public void test_getFeedback_when_input_match_nothing_return_0A0B() {
+        Integer[] secretNumber = new Integer[] {1, 2, 3, 4};
+        String actualFeedback = agent.getFeedback("5678", secretNumber);
+        assertEquals("0A0B", actualFeedback);
+    }
+
+    @Test
     public void test_getFeedback_when_input_match_char_return_0A2B() {
         Integer[] secretNumber = new Integer[] {1, 2, 3, 4};
         String actualFeedback = agent.getFeedback("2356", secretNumber);
         assertEquals("0A2B", actualFeedback);
     }
+
+    
 }
     
