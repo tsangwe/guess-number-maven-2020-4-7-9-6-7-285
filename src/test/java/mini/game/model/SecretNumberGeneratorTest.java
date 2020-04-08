@@ -19,4 +19,19 @@ public class SecretNumberGeneratorTest {
 
         assertEquals(false, secretNumbers.length != distinctCount);
     }
+
+    @Test
+    public void test_getSecretNumbers_number_in_range() {
+        secretNumberGenerator = new SecretNumberGenerator();
+        Integer[] secretNumbers = secretNumberGenerator.getSecretNumbers();
+        Boolean isInRange = true;
+
+        for (int number: secretNumbers) {
+            if (number < 0 || number > 9) {
+                isInRange = false;
+            }
+        }
+
+        assertEquals(true, isInRange);
+    }
 }
