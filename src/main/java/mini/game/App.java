@@ -4,11 +4,8 @@
 package mini.game;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        GameEngineCotroller gameEngineCotroller = new GameEngineCotroller();
+        gameEngineCotroller.run();
     }
 }
