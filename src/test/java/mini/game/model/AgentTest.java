@@ -19,8 +19,14 @@ public class AgentTest {
     }
 
     @Test
-    public void test_validateInput_when_input_length_too_long() {
+    public void test_isValidateInput_when_input_length_too_long() {
         boolean actualOutput = agent.isValidateInput("12345");
+        assertEquals(false, actualOutput);
+    }
+
+    @Test
+    public void test_isValidateInput_when_input_length_too_short() {
+        boolean actualOutput = agent.isValidateInput("12");
         assertEquals(false, actualOutput);
     }
 }
