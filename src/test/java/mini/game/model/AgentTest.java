@@ -17,5 +17,11 @@ public class AgentTest {
         boolean actualOutput = agent.isPlayerWin("2A0B");
         assertEquals(false, actualOutput);
     }
+
+    @Test
+    public void test_validateInput_when_input_length_too_long() {
+        boolean actualOutput = agent.isValidateInput("12345");
+        assertEquals(false, actualOutput);
+    }
 }
     

@@ -11,10 +11,19 @@ public class Agent {
         this.secretNumberGenerator = new SecretNumberGenerator();
     }
 
+    public boolean isValidateInput(String input) {
+        if (input.length() != 4) return false;
+        return true;
+    }
+
     public String checkPlayerInput(String input) {
         // TODO: implement logic here
+        return getFeedback(input, secretNumberGenerator.getSecretNumbers());
+    }
 
-        return "";
+    protected String getFeedback(String input, Integer[] secretNumber) {
+        String feedback = "";
+        return feedback;
     }
 
 	public boolean isPlayerWin(String feedback) {
