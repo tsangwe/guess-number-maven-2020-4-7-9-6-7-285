@@ -29,5 +29,11 @@ public class AgentTest {
         boolean actualOutput = agent.isValidateInput("12");
         assertEquals(false, actualOutput);
     }
+
+    @Test
+    public void test_isValidateInput_when_input_is_valid() {
+        boolean actualOutput = agent.isValidateInput("1234");
+        assertEquals(true, actualOutput);
+    }
 }
     
