@@ -18,6 +18,7 @@ public class Agent {
     }
 
 	public boolean isPlayerWin(String feedback) {
+        if (WINNING_OUTPUT.equals(feedback)) return true;
 		return false;
 	}
 }
