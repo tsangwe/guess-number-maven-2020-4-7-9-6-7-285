@@ -36,7 +36,7 @@ public class Agent {
         int countMatchCharAndPosition = 0;
         int countMatchOnlyChar = 0;
         Integer[] inputIntegerArray = new Integer[4];
-        for(int i: secretNumber) {System.out.println(i);}
+        
         for (int charIndex = 0; charIndex < input.length(); charIndex++) {
             inputIntegerArray[charIndex] = Integer.parseInt(String.valueOf(input.charAt(charIndex)));
         }
