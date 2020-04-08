@@ -22,7 +22,6 @@ public class GameEngineCotroller {
     public void startTurn(int gameTurn) {
         if (gameTurn == 0) {
             System.out.println("Haha, loser!");
-            scanner.close();
             System.exit(0);
         }
         System.out.println("You have " + this.gameTurnsAllowence + " left.\nWhat is the number?");
@@ -43,7 +42,6 @@ public class GameEngineCotroller {
 
         if (agent.isPlayerWin(agentFeedback)) {
             System.out.println("Congrat, you win!");
-            scanner.close();
             System.exit(0);
         }
 

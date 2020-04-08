@@ -1,5 +1,8 @@
 package mini.game.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.commons.lang3.math.NumberUtils;
 
 public class Agent {
@@ -13,6 +16,15 @@ public class Agent {
 
     public boolean isValidateInput(String input) {
         if (input.length() != 4 || !NumberUtils.isParsable(input)) return false;
+
+        // Check for duplicates
+        Set<String> map = new HashSet<String>();
+        for (char numInChar: input.toCharArray()) {
+            String numCharInString = String.valueOf(numInChar);
+            if (map.contains(numCharInString)) return false;
+            map.add(numCharInString);
+        }
+        
         return true;
     }
 
@@ -24,7 +36,7 @@ public class Agent {
         int countMatchCharAndPosition = 0;
         int countMatchOnlyChar = 0;
         Integer[] inputIntegerArray = new Integer[4];
-
+        for(int i: secretNumber) {System.out.println(i);}
         for (int charIndex = 0; charIndex < input.length(); charIndex++) {
             inputIntegerArray[charIndex] = Integer.parseInt(String.valueOf(input.charAt(charIndex)));
         }

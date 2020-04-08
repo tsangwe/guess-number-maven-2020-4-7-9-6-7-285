@@ -43,6 +43,12 @@ public class AgentTest {
     }
 
     @Test
+    public void test_isValidateInput_when_input_has_duplicates_return_false() {
+        boolean actualOutput = agent.isValidateInput("1123");
+        assertEquals(false, actualOutput);
+    }
+
+    @Test
     public void test_isValidateInput_when_input_is_valid_return_true() {
         boolean actualOutput = agent.isValidateInput("1234");
         assertEquals(true, actualOutput);
