@@ -27,6 +27,7 @@ public class GameEngineCotroller {
         Scanner scanner = new Scanner(System.in);
         String playerGuess = scanner.nextLine();
         scanner.close();
+        
         String agentFeedback = agent.checkPlayerInput(playerGuess);
 
         System.out.println("Your input: " + playerGuess + ",\tAgent output:" + agentFeedback);

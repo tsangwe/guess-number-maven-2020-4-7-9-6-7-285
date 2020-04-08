@@ -2,8 +2,6 @@ package mini.game.model;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.stream.Stream;
-
 import org.junit.Test;   
     
 public class AgentTest {
