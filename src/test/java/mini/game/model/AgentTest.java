@@ -13,5 +13,11 @@ public class AgentTest {
         boolean actualOutput = agent.isPlayerWin("4A0B");
         assertEquals(true, actualOutput);
     }
+
+    @Test
+    public void test_isPlayerWin_when_player_lose_return_false() {
+        boolean actualOutput = agent.isPlayerWin("2A0B");
+        assertEquals(false, actualOutput);
+    }
 }
     
