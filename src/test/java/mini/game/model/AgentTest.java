@@ -19,19 +19,25 @@ public class AgentTest {
     }
 
     @Test
-    public void test_isValidateInput_when_input_length_too_long() {
+    public void test_isValidateInput_when_input_length_too_long_return_false() {
         boolean actualOutput = agent.isValidateInput("12345");
         assertEquals(false, actualOutput);
     }
 
     @Test
-    public void test_isValidateInput_when_input_length_too_short() {
+    public void test_isValidateInput_when_input_length_too_short_return_false() {
         boolean actualOutput = agent.isValidateInput("12");
         assertEquals(false, actualOutput);
     }
 
     @Test
-    public void test_isValidateInput_when_input_is_valid() {
+    public void test_isValidateInput_when_input_contains_space_return_false() {
+        boolean actualOutput = agent.isValidateInput("123 4");
+        assertEquals(false, actualOutput);
+    }
+
+    @Test
+    public void test_isValidateInput_when_input_is_valid_return_true() {
         boolean actualOutput = agent.isValidateInput("1234");
         assertEquals(true, actualOutput);
     }
