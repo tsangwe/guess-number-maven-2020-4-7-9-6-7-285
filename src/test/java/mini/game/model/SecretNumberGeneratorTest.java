@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
+import mini.game.generator.SecretNumberGenerator;
+
 public class SecretNumberGeneratorTest {
 
     SecretNumberGenerator secretNumberGenerator;

@@ -1,14 +1,15 @@
 package mini.game;
 
-import java.util.Scanner;
-
 import mini.game.model.Agent;
+import mini.game.model.ConsoleInputReader;
 
 public class GameEngineCotroller {
+    private static final String LOSE_MESSAGE = "Haha, loser!";
+    private static final String WIN_MESSAGE = "Congrat, you win!";
+    
     private Agent agent;
     private int gameTurnsAllowence;
-    private Scanner scanner;
-
+    
     public GameEngineCotroller() {
         this.agent = new Agent();
         this.gameTurnsAllowence = 6;
@@ -21,14 +22,14 @@ public class GameEngineCotroller {
 
     public void startTurn(int gameTurn) {
         if (gameTurn == 0) {
-            System.out.println("Haha, loser!");
+            System.out.println(LOSE_MESSAGE);
             System.exit(0);
         }
         System.out.println("You have " + this.gameTurnsAllowence + " left.\nWhat is the number?");
 
         // User input
-        Scanner scanner = new Scanner(System.in);
-        String playerGuess = scanner.nextLine();
+        ConsoleInputReader consoleInputReader = new ConsoleInputReader();
+        String playerGuess = consoleInputReader.getInput();
 
         // Input again if not an valid input
         if (!agent.isValidateInput(playerGuess)) {
@@ -41,7 +42,7 @@ public class GameEngineCotroller {
         System.out.println("Your input: " + playerGuess + ",\tAgent output:" + agentFeedback);
 
         if (agent.isPlayerWin(agentFeedback)) {
-            System.out.println("Congrat, you win!");
+            System.out.println(WIN_MESSAGE);
             System.exit(0);
         }
 

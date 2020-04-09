@@ -5,7 +5,10 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
+import mini.game.generator.SecretNumberGenerator;
+
 public class Agent {
+    private static final String FEEDBACK_PATTERN = "%dA%dB";
     private static final String WINNING_OUTPUT = "4A0B";
 
     private SecretNumberGenerator secretNumberGenerator;
@@ -35,8 +38,8 @@ public class Agent {
     protected String getFeedback(String input, Integer[] secretNumber) {
         int countMatchCharAndPosition = 0;
         int countMatchOnlyChar = 0;
-        Integer[] inputIntegerArray = new Integer[4];
-        
+        Integer[] inputIntegerArray = new Integer[secretNumber.length];
+
         for (int charIndex = 0; charIndex < input.length(); charIndex++) {
             inputIntegerArray[charIndex] = Integer.parseInt(String.valueOf(input.charAt(charIndex)));
         }
@@ -47,7 +50,8 @@ public class Agent {
                 countMatchOnlyChar++;
                 continue;
             } else {
-                for (int innerIdex = currIndex + 1; innerIdex < secretNumber.length; innerIdex++) {
+                for (int innerIdex = 0; innerIdex < secretNumber.length; innerIdex++) {
+                    if (innerIdex == currIndex) continue;
                     if (inputIntegerArray[currIndex] == secretNumber[innerIdex]) {
                         countMatchOnlyChar++;
                         break;
@@ -58,7 +62,7 @@ public class Agent {
 
         countMatchOnlyChar -= countMatchCharAndPosition;
 
-        return String.format("%dA%dB", countMatchCharAndPosition, countMatchOnlyChar);
+        return String.format(FEEDBACK_PATTERN, countMatchCharAndPosition, countMatchOnlyChar);
     }
 
 	public boolean isPlayerWin(String feedback) {

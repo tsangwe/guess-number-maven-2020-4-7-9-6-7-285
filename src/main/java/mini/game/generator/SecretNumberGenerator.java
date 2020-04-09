@@ -1,9 +1,9 @@
-package mini.game.model;
+package mini.game.generator;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SecretNumberGenerator {
+public class SecretNumberGenerator implements NumberGenerator {
     private static final int NUMBER_POOL_RANGE = 9;
     private static final int SECRET_NUMBER_LENGTH = 4;
 
@@ -14,6 +14,7 @@ public class SecretNumberGenerator {
         genNewSecretNumber();
     }
 
+    @Override
     public Integer[] getSecretNumbers() {
         return this.secretNumbers;
     }
