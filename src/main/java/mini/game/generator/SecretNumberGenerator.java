@@ -1,17 +1,25 @@
 package mini.game.generator;
 
+import mini.game.exception.FailToGenerateRandomIndexException;
+
 import java.util.ArrayList;
+import java.util.OptionalInt;
 import java.util.Random;
 
 public class SecretNumberGenerator implements NumberGenerator {
     private static final int NUMBER_POOL_RANGE = 9;
     private static final int SECRET_NUMBER_LENGTH = 4;
+    private static final int RANDOM_NUMBER_BEGIN_INCLUDE = 0;
 
     private Integer[] secretNumbers;
 
 
     public SecretNumberGenerator() {
-        genNewSecretNumber();
+        try {
+            genNewSecretNumber();
+        } catch (FailToGenerateRandomIndexException failToGenerateRandomIndexException) {
+            failToGenerateRandomIndexException.printStackTrace();
+        }
     }
 
     @Override
@@ -19,7 +27,7 @@ public class SecretNumberGenerator implements NumberGenerator {
         return this.secretNumbers;
     }
 
-    public void genNewSecretNumber() {
+    public void genNewSecretNumber() throws FailToGenerateRandomIndexException {
         Integer[] newSecretNumberArray = new Integer[SECRET_NUMBER_LENGTH];
 
         // Create number pool
@@ -36,8 +44,10 @@ public class SecretNumberGenerator implements NumberGenerator {
         this.secretNumbers = newSecretNumberArray;
     }
 
-    private int pickRandomIndexFromNumberPool(int poolSize) {
+    private int pickRandomIndexFromNumberPool(int poolSize) throws FailToGenerateRandomIndexException {
         Random random = new Random();
-        return random.ints(0, (poolSize)).limit(1).findFirst().getAsInt();
+        OptionalInt randomNumberOptional = random.ints(RANDOM_NUMBER_BEGIN_INCLUDE, (poolSize)).limit(1).findFirst();
+        if (randomNumberOptional.isPresent()) return randomNumberOptional.getAsInt();
+        throw new FailToGenerateRandomIndexException();
     }
 }
