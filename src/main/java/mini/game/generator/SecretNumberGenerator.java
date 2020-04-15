@@ -47,7 +47,9 @@ public class SecretNumberGenerator implements NumberGenerator {
     private int pickRandomIndexFromNumberPool(int poolSize) throws FailToGenerateRandomIndexException {
         Random random = new Random();
         OptionalInt randomNumberOptional = random.ints(RANDOM_NUMBER_BEGIN_INCLUDE, (poolSize)).limit(1).findFirst();
-        if (randomNumberOptional.isPresent()) return randomNumberOptional.getAsInt();
+        if (randomNumberOptional.isPresent()) {
+            return randomNumberOptional.getAsInt();
+        }
         throw new FailToGenerateRandomIndexException();
     }
 }
