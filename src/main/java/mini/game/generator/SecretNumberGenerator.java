@@ -21,6 +21,9 @@ public class SecretNumberGenerator implements NumberGenerator {
 
     public void genNewSecretNumber() {
         secretNumbers = ThreadLocalRandom.current().ints(RANDOM_NUMBER_BEGIN_INCLUDE, NUMBER_POOL_RANGE)
-                .distinct().limit(SECRET_NUMBER_LENGTH).boxed().toArray(Integer[]::new);
+                .distinct()
+                .limit(SECRET_NUMBER_LENGTH)
+                .boxed()
+                .toArray(Integer[]::new);
     }
 }
